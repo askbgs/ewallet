@@ -1,0 +1,18 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "transactions",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "reciever_userid",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "tran_date",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ]
+}
