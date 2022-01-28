@@ -32,14 +32,7 @@ class ConfirmSheetWidget extends StatefulWidget {
 }
 
 class _ConfirmSheetWidgetState extends State<ConfirmSheetWidget> {
-  TextEditingController textController;
   TransactionsRecord tranId;
-
-  @override
-  void initState() {
-    super.initState();
-    textController = TextEditingController();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -200,54 +193,6 @@ class _ConfirmSheetWidgetState extends State<ConfirmSheetWidget> {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 12, 0),
-                      child: Icon(
-                        Icons.sms_failed_rounded,
-                        color: Color(0xFF00C9A9),
-                        size: 24,
-                      ),
-                    ),
-                    Expanded(
-                      child: TextFormField(
-                        controller: textController,
-                        obscureText: false,
-                        decoration: InputDecoration(
-                          hintText: 'enter your pin',
-                          hintStyle: FlutterFlowTheme.bodyText1,
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                          focusedBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(
-                              color: Color(0x00000000),
-                              width: 1,
-                            ),
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(4.0),
-                              topRight: Radius.circular(4.0),
-                            ),
-                          ),
-                        ),
-                        style: FlutterFlowTheme.bodyText1,
-                        keyboardType: TextInputType.number,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               Expanded(
                 child: Align(
                   alignment: AlignmentDirectional(0, -0.05),
@@ -257,7 +202,8 @@ class _ConfirmSheetWidgetState extends State<ConfirmSheetWidget> {
                       onPressed: () async {
                         final transactionsCreateData =
                             createTransactionsRecordData(
-                          tranId: '200002',
+                          tranId:
+                              'tran-${functions.genUniqueid(currentUserUid)}',
                           recieverAccount:
                               functions.getaccount(widget.reciveraccount),
                           senderUserid: currentUserReference,

@@ -5,6 +5,8 @@ import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import '../home_page/home_page_widget.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -385,6 +387,16 @@ class _RegisterWidgetState extends State<RegisterWidget>
                               .doc(user.uid)
                               .update(usersCreateData);
 
+                          final accountCreateData = createAccountRecordData(
+                            accountId:
+                                functions.genAccountnumber(currentUserUid),
+                            accountName: 'Saving',
+                            amount: 100.0,
+                            userId: currentUserReference,
+                          );
+                          await AccountRecord.collection
+                              .doc()
+                              .set(accountCreateData);
                           await Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(

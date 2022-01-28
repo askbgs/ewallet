@@ -38,3 +38,17 @@ DocumentReference getCurrentBalance(String accountid) {
   // Add your function code here!
   return FirebaseFirestore.instance.doc('account/$accountid');
 }
+
+String genUniqueid(String uid) {
+  // Add your function code here!
+  String _randomString = uid.toString() +
+      math.Random().nextInt(9999).toString() +
+      math.Random().nextInt(9999).toString() +
+      math.Random().nextInt(9999).toString();
+  return _randomString;
+}
+
+String genAccountnumber(String userid) {
+  // Add your function code here!
+  return "AC-" + userid;
+}
